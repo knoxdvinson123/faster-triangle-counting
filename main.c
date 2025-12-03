@@ -430,6 +430,9 @@ main(int argc, char **argv) {
   if (!QUIET)
     fprintf(outfile,"%% of horizontal edges from bfs (k): %9.6f\n",tc_bader_compute_k(originalGraph));
 
+  if (!QUIET)
+    printf("%-30s %-12s %-12s %-12s %-12s\n", "Algorithm", "Vertices", "Edges", "Time(s)", "Triangles");
+
   copy_graph(originalGraph, graph);
   numTriangles = tc_wedge(graph);
   correctTriangleCount = numTriangles;
@@ -452,36 +455,36 @@ main(int argc, char **argv) {
 #endif
 
   benchmarkTC(tc_wedge, originalGraph, graph, "tc_wedge");
-  benchmarkTC(tc_wedge_DO, originalGraph, graph, "tc_wedge_DO");
-  benchmarkTC(tc_intersectMergePath, originalGraph, graph, "tc_intersect_MergePath");
-  benchmarkTC(tc_intersectMergePath_DO, originalGraph, graph, "tc_intersect_MergePath_DO");
-  benchmarkTC(tc_intersectBinarySearch, originalGraph, graph, "tc_intersect_BinarySearch");
-  benchmarkTC(tc_intersectBinarySearch_DO, originalGraph, graph, "tc_intersect_BinarySearch_DO");
-  benchmarkTC(tc_intersectPartition, originalGraph, graph, "tc_intersect_Partition");
-  benchmarkTC(tc_intersectPartition_DO, originalGraph, graph, "tc_intersect_Partition_DO");
-  benchmarkTC(tc_intersectHash, originalGraph, graph, "tc_intersect_Hash");
-  benchmarkTC(tc_intersectHash_DO, originalGraph, graph, "tc_intersect_Hash_DO");
-  benchmarkTC(tc_forward, originalGraph, graph, "tc_forward");
+  // benchmarkTC(tc_wedge_DO, originalGraph, graph, "tc_wedge_DO");
+  // benchmarkTC(tc_intersectMergePath, originalGraph, graph, "tc_intersect_MergePath");
+  // benchmarkTC(tc_intersectMergePath_DO, originalGraph, graph, "tc_intersect_MergePath_DO");
+  // benchmarkTC(tc_intersectBinarySearch, originalGraph, graph, "tc_intersect_BinarySearch");
+  // benchmarkTC(tc_intersectBinarySearch_DO, originalGraph, graph, "tc_intersect_BinarySearch_DO");
+  // benchmarkTC(tc_intersectPartition, originalGraph, graph, "tc_intersect_Partition");
+  // benchmarkTC(tc_intersectPartition_DO, originalGraph, graph, "tc_intersect_Partition_DO");
+  // benchmarkTC(tc_intersectHash, originalGraph, graph, "tc_intersect_Hash");
+  // benchmarkTC(tc_intersectHash_DO, originalGraph, graph, "tc_intersect_Hash_DO");
+  // benchmarkTC(tc_forward, originalGraph, graph, "tc_forward");
   benchmarkTC(tc_forward_hash, originalGraph, graph, "tc_forward_hash");
-  benchmarkTC(tc_forward_hash_skip, originalGraph, graph, "tc_forward_hash_skip");
-  benchmarkTC(tc_forward_hash_degreeOrder, originalGraph, graph, "tc_forward_hash_degreeOrder");
-  benchmarkTC(tc_forward_hash_degreeOrderReverse, originalGraph, graph, "tc_forward_hash_degreeOrderRev");
-  benchmarkTC(tc_compact_forward, originalGraph, graph, "tc_compact_forward");
-  benchmarkTC(tc_davis, originalGraph, graph, "tc_davis");
-  benchmarkTC(tc_low, originalGraph, graph, "tc_low");
-  benchmarkTC(tc_bader, originalGraph, graph, "tc_bader");
-  benchmarkTC(tc_bader2, originalGraph, graph, "tc_bader2");
-  benchmarkTC(tc_bader3, originalGraph, graph, "tc_bader3");
-  benchmarkTC(tc_bader4, originalGraph, graph, "tc_bader4");
-  benchmarkTC(tc_bader5, originalGraph, graph, "tc_bader5");
-  benchmarkTC(tc_bader4_degreeOrder, originalGraph, graph, "tc_bader4_degreeOrder");
-  benchmarkTC(tc_bader_forward_hash, originalGraph, graph, "tc_bader_forward_hash");
-  benchmarkTC(tc_bader_forward_hash_degreeOrder, originalGraph, graph, "tc_bader_forward_hash_degOrd");
-  benchmarkTC(tc_bader_recursive, originalGraph, graph, "tc_bader_recursive");
-  benchmarkTC(tc_bader_hybrid, originalGraph, graph, "tc_bader_hybrid");
-  benchmarkTC(tc_bader_new_bfs, originalGraph, graph, "tc_bader_new_bfs");
-  benchmarkTC(tc_treelist, originalGraph, graph, "tc_treelist");
-  benchmarkTC(tc_treelist2, originalGraph, graph, "tc_treelist2");
+  // benchmarkTC(tc_forward_hash_skip, originalGraph, graph, "tc_forward_hash_skip");
+  // benchmarkTC(tc_forward_hash_degreeOrder, originalGraph, graph, "tc_forward_hash_degreeOrder");
+  // benchmarkTC(tc_forward_hash_degreeOrderReverse, originalGraph, graph, "tc_forward_hash_degreeOrderRev");
+  // benchmarkTC(tc_compact_forward, originalGraph, graph, "tc_compact_forward");
+  // benchmarkTC(tc_davis, originalGraph, graph, "tc_davis");
+  // benchmarkTC(tc_low, originalGraph, graph, "tc_low");
+  // benchmarkTC(tc_bader, originalGraph, graph, "tc_bader");
+  // benchmarkTC(tc_bader2, originalGraph, graph, "tc_bader2");
+  // benchmarkTC(tc_bader3, originalGraph, graph, "tc_bader3");
+  // benchmarkTC(tc_bader4, originalGraph, graph, "tc_bader4");
+  // benchmarkTC(tc_bader5, originalGraph, graph, "tc_bader5");
+  // benchmarkTC(tc_bader4_degreeOrder, originalGraph, graph, "tc_bader4_degreeOrder");
+  // benchmarkTC(tc_bader_forward_hash, originalGraph, graph, "tc_bader_forward_hash");
+  // benchmarkTC(tc_bader_forward_hash_degreeOrder, originalGraph, graph, "tc_bader_forward_hash_degOrd");
+  // benchmarkTC(tc_bader_recursive, originalGraph, graph, "tc_bader_recursive");
+  // benchmarkTC(tc_bader_hybrid, originalGraph, graph, "tc_bader_hybrid");
+  // benchmarkTC(tc_bader_new_bfs, originalGraph, graph, "tc_bader_new_bfs");
+  // benchmarkTC(tc_treelist, originalGraph, graph, "tc_treelist");
+  // benchmarkTC(tc_treelist2, originalGraph, graph, "tc_treelist2");
   if (NCUBED)
     benchmarkTC(tc_triples, originalGraph, graph, "tc_triples");
   if (NCUBED)
@@ -498,23 +501,23 @@ main(int argc, char **argv) {
 
   
   benchmarkTC_P(tc_wedge_P, originalGraph, graph, "tc_wedge_P");
-  benchmarkTC_P(tc_wedge_DO_P, originalGraph, graph, "tc_wedge_DO_P");
-  benchmarkTC_P(tc_intersectMergePath_P, originalGraph, graph, "tc_intersect_MergePath_P");
-  benchmarkTC_P(tc_intersectMergePath_DO_P, originalGraph, graph, "tc_intersect_MergePath_DO_P");
-  benchmarkTC_P(tc_intersectBinarySearch_P, originalGraph, graph, "tc_intersect_BinarySearch_P");
-  benchmarkTC_P(tc_intersectBinarySearch_DO_P, originalGraph, graph, "tc_intersect_BinarySearch_DO_P");
-  benchmarkTC_P(tc_intersectPartition_P, originalGraph, graph, "tc_intersect_Partition_P");
-  benchmarkTC_P(tc_intersectPartition_DO_P, originalGraph, graph, "tc_intersect_Partition_DO_P");
-  benchmarkTC_P(tc_intersectHash_P, originalGraph, graph, "tc_intersect_Hash_P");
-  benchmarkTC_P(tc_intersectHash_DO_P, originalGraph, graph, "tc_intersect_Hash_DO_P");
-  benchmarkTC_P(tc_bader_bfs1_P, originalGraph, graph, "tc_bader_bfs1_P");
-  benchmarkTC_P(tc_bader_bfs3_P, originalGraph, graph, "tc_bader_bfs3_P");
-  benchmarkTC_P(tc_bader_bfs_visited_P, originalGraph, graph, "tc_bader_bfs_visited_P");
-  benchmarkTC_P(tc_bader_bfs_hybrid_P, originalGraph, graph, "tc_bader_bfs_hybrid_P");
-  benchmarkTC_P(tc_bader_bfs_hybrid2_P, originalGraph, graph, "tc_bader_bfs_hybrid2_P");
-  benchmarkTC_P(tc_bader_bfs_chatgpt_P, originalGraph, graph, "tc_bader_bfs_chatgpt_P");
-  benchmarkTC_P(tc_bader_bfs_locks_P, originalGraph, graph, "tc_bader_bfs_locks_P");
-  benchmarkTC_P(tc_MapJIK_P, originalGraph, graph, "tc_MapJIK_P");
+  // benchmarkTC_P(tc_wedge_DO_P, originalGraph, graph, "tc_wedge_DO_P");
+  // benchmarkTC_P(tc_intersectMergePath_P, originalGraph, graph, "tc_intersect_MergePath_P");
+  // benchmarkTC_P(tc_intersectMergePath_DO_P, originalGraph, graph, "tc_intersect_MergePath_DO_P");
+  // benchmarkTC_P(tc_intersectBinarySearch_P, originalGraph, graph, "tc_intersect_BinarySearch_P");
+  // benchmarkTC_P(tc_intersectBinarySearch_DO_P, originalGraph, graph, "tc_intersect_BinarySearch_DO_P");
+  // benchmarkTC_P(tc_intersectPartition_P, originalGraph, graph, "tc_intersect_Partition_P");
+  // benchmarkTC_P(tc_intersectPartition_DO_P, originalGraph, graph, "tc_intersect_Partition_DO_P");
+  // benchmarkTC_P(tc_intersectHash_P, originalGraph, graph, "tc_intersect_Hash_P");
+  // benchmarkTC_P(tc_intersectHash_DO_P, originalGraph, graph, "tc_intersect_Hash_DO_P");
+  // benchmarkTC_P(tc_bader_bfs1_P, originalGraph, graph, "tc_bader_bfs1_P");
+  // benchmarkTC_P(tc_bader_bfs3_P, originalGraph, graph, "tc_bader_bfs3_P");
+  // benchmarkTC_P(tc_bader_bfs_visited_P, originalGraph, graph, "tc_bader_bfs_visited_P");
+  // benchmarkTC_P(tc_bader_bfs_hybrid_P, originalGraph, graph, "tc_bader_bfs_hybrid_P");
+  // benchmarkTC_P(tc_bader_bfs_hybrid2_P, originalGraph, graph, "tc_bader_bfs_hybrid2_P");
+  // benchmarkTC_P(tc_bader_bfs_chatgpt_P, originalGraph, graph, "tc_bader_bfs_chatgpt_P");
+  // benchmarkTC_P(tc_bader_bfs_locks_P, originalGraph, graph, "tc_bader_bfs_locks_P");
+  // benchmarkTC_P(tc_MapJIK_P, originalGraph, graph, "tc_MapJIK_P");
   benchmarkTC_P(tc_forward_hash_P, originalGraph, graph, "tc_forward_hash_P");
   if (NCUBED)
     benchmarkTC_P(tc_triples_P, originalGraph, graph, "tc_triples_P");
